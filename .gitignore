@@ -1,0 +1,29 @@
+# Eclipse workspace 
+.metadata/
+
+# Node
+node_modules/
+dist/
+
+# Angular
+.angular/
+coverage/
+
+# Java
+target/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.class
+*.project
+*.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
