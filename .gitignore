@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
@@ -63,3 +64,74 @@ Thumbs.db
 # Env
 .env
 >>>>>>> f2e79b687442134c5b30e21e73d87cb5cd801399
+=======
+############################
+# 🧠 OS Files
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# 🧠 IDE / Editors
+############################
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.metadata/
+.settings/
+.project
+.classpath
+
+############################
+# 🧠 Logs
+############################
+*.log
+logs/
+
+############################
+# 🧠 Environment Files
+############################
+.env
+.env.*
+application-local.properties
+application-dev.properties
+
+############################
+# 🧠 Maven / Java / Spring Boot
+############################
+target/
+build/
+*.class
+*.jar
+*.war
+*.ear
+
+############################
+# 🧠 Node / Angular
+############################
+node_modules/
+dist/
+.angular/
+coverage/
+.tmp/
+.npm/
+
+############################
+# 🧠 Angular Cache
+############################
+.angular/cache/
+
+############################
+# 🧠 Test Output
+############################
+test-output/
+surefire-reports/
+
+############################
+# 🧠 Misc
+############################
+*.swp
+*.swogit add .gitignore
+>>>>>>> 8c9a05b (feat: F03-F08 full-stack task management, responsive UI, and protected routing)
