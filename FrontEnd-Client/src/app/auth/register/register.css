@@ -1,0 +1,20 @@
+.max-w-md {
+  max-width: 420px;
+}
+
+.brand-panel {
+  background-color: #1e40af;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-title {
+  font-size: 3rem;
+  letter-spacing: 0.5px;
+}
+
+.brand-subtitle {
+  opacity: 0.9;
+}

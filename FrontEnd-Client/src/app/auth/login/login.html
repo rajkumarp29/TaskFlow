@@ -1,0 +1,79 @@
+<div class="container-fluid min-vh-100">
+
+  <div class="row min-vh-100">
+
+    <!-- LEFT BRAND PANEL -->
+    <div class="col-md-6 d-none d-md-flex bg-primary text-white flex flex-col justify-center items-start p-5">
+
+      <h1 class="fw-bold text-4xl mb-3">TaskFlow</h1>
+
+      <p class="mb-4 opacity-90">
+        Stay on top of your tasks and deadlines.
+      </p>
+
+      <ul class="list-unstyled space-y-2">
+        <li>• Create & organize tasks easily</li>
+        <li>• Track progress in real-time</li>
+        <li>• Collaborate with your team</li>
+      </ul>
+
+    </div>
+
+    <!-- RIGHT LOGIN PANEL -->
+    <div class="col-md-6 flex items-center justify-center bg-light">
+
+      <div class="card shadow-lg rounded-4 p-4 w-100 max-w-md">
+
+        <h3 class="text-center mb-1 fw-semibold">Welcome Back</h3>
+        <p class="text-center text-muted mb-4">Sign in to your account</p>
+
+        <form (ngSubmit)="onLogin()">
+
+          <input
+            type="email"
+            class="form-control mb-3"
+            placeholder="Email address"
+            [(ngModel)]="form.email"
+            name="email"
+            required
+          />
+
+          <input
+            type="password"
+            class="form-control mb-2"
+            placeholder="Password"
+            [(ngModel)]="form.password"
+            name="password"
+            required
+          />
+
+          <div class="text-end mb-3">
+            <small class="text-primary cursor-pointer">
+              Forgot password?
+            </small>
+          </div>
+
+          <button
+            class="btn btn-primary w-100 rounded-3"
+            [disabled]="!form.email || !form.password">
+            Sign In
+          </button>
+
+        </form>
+
+        <div class="text-center mt-3">
+          <small>
+            Don't have an account?
+            <a routerLink="/register" class="text-primary fw-semibold">
+              Register here
+            </a>
+          </small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

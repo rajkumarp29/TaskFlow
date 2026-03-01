@@ -1,0 +1,210 @@
+.dashboard-container {
+  padding: 24px;
+  background: #f4f6fa;
+  min-height: 100vh;
+}
+
+/* ===== Stats ===== */
+
+/* ===== STAT CARDS ===== */
+.stat-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  height: 100%;
+  min-height: 110px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border-left: 6px solid #2563eb;
+}
+
+/* colored borders */
+.stat-card.todo { border-left-color: #64748b; }
+.stat-card.progress { border-left-color: #f59e0b; }
+.stat-card.done { border-left-color: #22c55e; }
+
+.stat-title {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ===== Toolbar ===== */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.status-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  border: 1px solid #cbd5e1;
+  background: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-box {
+  width: 220px;
+}
+
+.new-btn {
+  border-radius: 8px;
+}
+
+/* ===== Task Card ===== */
+
+.task-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: 0.2s;
+  height: 100%;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+}
+
+.task-title {
+  font-weight: 600;
+}
+
+.task-desc {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ===== Status ===== */
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.todo-badge {
+  background: #e2e8f0;
+}
+
+.progress-badge {
+  background: #fde68a;
+}
+
+.done-badge {
+  background: #bbf7d0;
+}
+
+.due-date {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+/* ===== Actions ===== */
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ===== MOBILE STATS COMPACT ===== */
+@media (max-width: 767px) {
+
+  .dashboard-container .row.mb-4 {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 4px;
+  }
+
+  .dashboard-container .row.mb-4 > div {
+    flex: 0 0 140px;
+    max-width: 140px;
+  }
+
+  .stat-card {
+    min-height: 85px;
+    padding: 12px;
+  }
+
+  .stat-number {
+    font-size: 22px;
+  }
+}
+/* ===== MOBILE TASK POLISH ===== */
+@media (max-width: 767px) {
+
+  .task-card {
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .task-title {
+    font-size: 15px;
+  }
+
+  .task-desc {
+    font-size: 12px;
+  }
+}
+
+/* ===== TOOLBAR MOBILE ===== */
+@media (max-width: 767px) {
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .new-btn {
+    width: 100%;
+  }
+
+}
+
