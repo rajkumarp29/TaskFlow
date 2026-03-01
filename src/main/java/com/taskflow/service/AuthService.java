@@ -19,7 +19,7 @@ public class AuthService {
         this.userRepository = userRepository;
     }
 
-    // REGISTER
+    // ================= REGISTER =================
     public AuthResponse register(RegisterRequest request) {
 
         if (userRepository.existsByEmail(request.getEmail())) {
@@ -29,15 +29,16 @@ public class AuthService {
         User user = new User();
         user.setFullName(request.getFullName());
         user.setEmail(request.getEmail());
-        user.setPasswordHash(request.getPassword()); // plain text (OK for now)
-        user.setCreatedAt(LocalDateTime.now());      // 🔥 IMPORTANT
+        user.setPasswordHash(request.getPassword());
+        user.setCreatedAt(LocalDateTime.now());
 
         userRepository.save(user);
 
-        return new AuthResponse("REGISTER_SUCCESS");
+        // 🔥 temporary token (until JWT added)
+        return new AuthResponse("dummy-token");
     }
 
-    // LOGIN
+    // ================= LOGIN =================
     public AuthResponse login(LoginRequest request) {
 
         User user = userRepository.findByEmail(request.getEmail())
@@ -48,6 +49,6 @@ public class AuthService {
             throw new IllegalArgumentException("Invalid email or password");
         }
 
-        return new AuthResponse("LOGIN_SUCCESS");
+        return new AuthResponse("dummy-token");
     }
 }
