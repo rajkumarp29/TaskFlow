@@ -29,4 +29,12 @@ public class Task {
     private LocalDate dueDate;
 
     private LocalDateTime createdAt;
+
+    // ✅ Priority
+    private String priority; // LOW, MEDIUM, HIGH
+
+    // ✅ Assigned User
+    @ManyToOne
+    @JoinColumn(name = "assigned_to")
+    private User assignedTo;
 }

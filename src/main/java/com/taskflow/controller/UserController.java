@@ -1,21 +1,25 @@
 package com.taskflow.controller;
 
-import org.springframework.http.ResponseEntity;
+import com.taskflow.entity.User;
+import com.taskflow.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import com.taskflow.dto.UserResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
-    // GET USER PROFILE (mock for now)
-    @GetMapping("/me")
-    public ResponseEntity<UserResponse> getCurrentUser() {
+    private final UserService userService;
 
-        UserResponse user = new UserResponse(
-        );
-
-        return ResponseEntity.ok(user);
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
+
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
 }

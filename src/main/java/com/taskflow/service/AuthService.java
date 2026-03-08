@@ -29,12 +29,14 @@ public class AuthService {
         User user = new User();
         user.setFullName(request.getFullName());
         user.setEmail(request.getEmail());
+
+        // saving plain password (temporary)
         user.setPasswordHash(request.getPassword());
+
         user.setCreatedAt(LocalDateTime.now());
 
         userRepository.save(user);
 
-        // 🔥 temporary token (until JWT added)
         return new AuthResponse("dummy-token");
     }
 
@@ -45,6 +47,7 @@ public class AuthService {
                 .orElseThrow(() ->
                         new IllegalArgumentException("Invalid email or password"));
 
+        // simple password check
         if (!user.getPasswordHash().equals(request.getPassword())) {
             throw new IllegalArgumentException("Invalid email or password");
         }
