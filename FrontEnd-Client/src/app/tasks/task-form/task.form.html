@@ -1,68 +1,58 @@
-<!-- Overlay -->
-<div class="modal-backdrop-custom">
-  <div class="task-modal card shadow-lg rounded-4">
+<div class="modal-overlay">
 
-    <!-- Header -->
-    <div class="modal-header-custom d-flex justify-content-between align-items-center">
-      <h5 class="mb-0 fw-semibold">
-        {{ task?.id ? 'Edit Task' : 'Create New Task' }}
-      </h5>
+  <div class="modal-card">
 
-      <button class="btn-close" (click)="close()"></button>
+    <!-- HEADER -->
+    <div class="modal-header-custom">
+      {{ form.id ? 'Edit Task' : 'Create New Task' }}
+      <button class="close-btn" (click)="saved.emit()">✕</button>
     </div>
 
-    <!-- Body -->
+    <!-- BODY -->
     <div class="modal-body-custom">
 
-      <!-- Title -->
+      <!-- TITLE -->
       <div class="mb-3">
-        <label class="form-label fw-semibold">Task Title *</label>
+        <label class="form-label">Task Title</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Eg: Fix login bug"
           [(ngModel)]="form.title"
-          name="title"
-          required
-        />
+          name="title">
       </div>
 
-      <!-- Description -->
+      <!-- DESCRIPTION -->
       <div class="mb-3">
-        <label class="form-label fw-semibold">Description</label>
+        <label>Description</label>
         <textarea
-          rows="3"
           class="form-control"
-          placeholder="Add relevant details..."
+          rows="2"
           [(ngModel)]="form.description"
-          name="description"
-        ></textarea>
+          name="description">
+        </textarea>
       </div>
 
-      <!-- Row -->
-      <div class="row">
+      <!-- ROW -->
+      <div class="form-row">
 
-        <!-- Due Date -->
-        <div class="col-md-6 mb-3">
-          <label class="form-label fw-semibold">Due Date *</label>
+        <!-- DUE DATE -->
+        <div class="form-col">
+          <label>Due Date</label>
           <input
             type="date"
             class="form-control"
             [(ngModel)]="form.dueDate"
-            name="dueDate"
-            required
-          />
+            name="dueDate">
         </div>
 
-        <!-- Status -->
-        <div class="col-md-6 mb-3">
-          <label class="form-label fw-semibold">Status</label>
+        <!-- STATUS -->
+        <div class="form-col">
+          <label>Status</label>
           <select
-            class="form-select"
+            class="form-control"
             [(ngModel)]="form.status"
-            name="status"
-          >
-            <option value="TO_DO">To-Do</option>
+            name="status">
+            <option value="TO_DO">To Do</option>
             <option value="IN_PROGRESS">In Progress</option>
             <option value="DONE">Done</option>
           </select>
@@ -70,27 +60,97 @@
 
       </div>
 
+      <!-- NEW FIELDS -->
+      <div class="new-fields">
+
+        <div class="form-row">
+
+          <!-- PRIORITY -->
+          <div class="form-col">
+
+            <label>Priority</label>
+
+            <select
+              class="form-control"
+              [(ngModel)]="form.priority"
+              name="priority">
+
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+
+            </select>
+
+            <div class="priority-preview">
+
+              <span class="priority-chip high">HIGH</span>
+              <span class="priority-chip medium">MEDIUM</span>
+              <span class="priority-chip low">LOW</span>
+
+            </div>
+
+          </div>
+
+          <!-- ASSIGN -->
+          <div class="form-col">
+
+            <label>Assign To</label>
+
+            <select
+              class="form-control"
+              [(ngModel)]="form.assignedTo"
+              name="assignedTo">
+
+              <option [ngValue]="null">Unassigned</option>
+
+              <option
+                *ngFor="let user of users"
+                [ngValue]="user.id">
+
+                {{ user.fullName }}
+
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- COMMENTS SECTION (EDIT MODE ONLY) -->
+      <div class="comments-section" *ngIf="form.id">
+
+        <h6>Comments</h6>
+
+        <app-comment-section
+          [taskId]="form.id">
+        </app-comment-section>
+
+      </div>
+
     </div>
 
-    <!-- Footer -->
-    <div class="modal-footer-custom d-flex justify-content-between">
+    <!-- FOOTER -->
+    <div class="modal-footer-custom">
 
       <button
-        class="btn btn-outline-secondary rounded-3"
-        (click)="close()"
-      >
+        class="btn-cancel"
+        (click)="saved.emit()">
         Cancel
       </button>
 
       <button
-        class="btn btn-primary rounded-3"
-        (click)="saveTask()"
-        [disabled]="!form.title || !form.dueDate"
-      >
-        {{ task?.id ? 'Save Changes' : 'Create Task' }}
+        class="btn-save"
+        (click)="saveTask()">
+
+        {{ form.id ? 'Update Task' : 'Create Task' }}
+
       </button>
 
     </div>
 
   </div>
+
 </div>

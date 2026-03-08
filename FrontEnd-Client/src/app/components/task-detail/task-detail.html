@@ -1,0 +1,77 @@
+<div class="modal-backdrop">
+
+<div class="task-modal">
+
+<div class="modal-header">
+
+<h4>Task Detail — {{task.title}}</h4>
+
+<button class="close-btn"
+(click)="close.emit()">✕</button>
+
+</div>
+
+<div class="modal-body">
+
+<!-- LEFT PANEL -->
+
+<div class="task-info">
+
+<h5>{{task.title}}</h5>
+
+<p>{{task.description}}</p>
+
+<div class="badge-row">
+
+<span class="status-badge">
+{{task.status}}
+</span>
+
+<span class="priority-badge">
+{{task.priority}}
+</span>
+
+</div>
+
+<div class="field">
+<b>Due Date:</b> {{task.dueDate}}
+</div>
+
+<div class="field">
+<b>Assigned To:</b>
+{{task.assignedTo?.fullName || 'Unassigned'}}
+</div>
+
+</div>
+
+<!-- RIGHT PANEL -->
+
+<div class="task-comments">
+
+<h5>Comments</h5>
+
+<app-comment-section
+[taskId]="task.id">
+</app-comment-section>
+
+</div>
+
+</div>
+
+<div class="modal-footer">
+
+<button class="btn btn-primary"
+(click)="editTask()">
+Edit
+</button>
+
+<button class="btn btn-danger"
+(click)="deleteTask()">
+Delete
+</button>
+
+</div>
+
+</div>
+
+</div>

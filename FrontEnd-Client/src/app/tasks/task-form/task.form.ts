@@ -1,49 +1,75 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { TaskService } from '../../services/task';
-import { Task } from '../../models/task.model';
+import { UserService } from '../../services/user';
+import { CommentSectionComponent } from '../comment-section/comment-section';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CommentSectionComponent],
   templateUrl: './task.form.html',
   styleUrls: ['./task.form.css']
 })
-export class TaskFormComponent implements OnChanges {
-close() {
-throw new Error('Method not implemented.');
-}
+export class TaskFormComponent implements OnInit {
 
-  @Input() task: Task | null = null;
+  @Input() task: any = null;
   @Output() saved = new EventEmitter<void>();
 
-  form: Task = {
+  users: any[] = [];
+
+  form: any = {
+    id: null,
     title: '',
     description: '',
     status: 'TO_DO',
-    dueDate: ''
-  } as Task;
+    dueDate: '',
+    priority: 'MEDIUM',
+    assignedTo: null
+  };
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private userService: UserService
+  ) {}
 
-  ngOnChanges() {
+  ngOnInit(): void {
+
+    this.userService.getUsers().subscribe(users => {
+      this.users = users;
+    });
+
     if (this.task) {
-      this.form = { ...this.task };
+      this.form = {
+        ...this.task,
+        assignedTo: this.task.assignedTo?.id || null
+      };
     }
   }
 
-  // ✅ Save (create or update)
   saveTask() {
-  console.log('SAVE CLICKED', this.form);
 
-  if (this.task?.id) {
-    this.taskService.updateTask(this.task.id, this.form)
-      .subscribe(() => this.saved.emit());
-  } else {
-    this.taskService.createTask(this.form)
-      .subscribe(() => this.saved.emit());
+    const payload = {
+      ...this.form,
+      assignedTo: this.form.assignedTo
+        ? { id: this.form.assignedTo }
+        : null
+    };
+
+    if (this.form.id) {
+
+      this.taskService.updateTask(this.form.id, payload)
+        .subscribe(() => this.saved.emit());
+
+    } else {
+
+      this.taskService.createTask(payload)
+        .subscribe(() => this.saved.emit());
+
+    }
+
   }
-}
+
 }

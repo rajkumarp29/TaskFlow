@@ -1,137 +1,327 @@
+<div class="dashboard-layout">
+
+<!-- ================= MAIN DASHBOARD ================= -->
+
+<div class="dashboard-main">
+
 <div class="dashboard-container">
 
-  <!-- ===== Top Stats ===== -->
+<!-- ================= ALERT BANNER ================= -->
+
+<div *ngIf="overdueCount > 0 || todayCount > 0" class="alert-banner">
+  You have 
+  <b>{{ overdueCount }}</b> overdue task(s) and 
+  <b>{{ todayCount }}</b> task(s) due today.
+</div>
+
+
+<!-- ================= STATS ================= -->
+
 <div class="row mb-4 stat-row">
 
- <div class="col-6 col-md-3">
+  <div class="col-6 col-md-3">
     <div class="stat-card total">
       <div class="stat-title">Total Tasks</div>
-      <div class="stat-number">{{ tasks.length }}</div>
+      <div class="stat-number">{{ totalCount }}</div>
     </div>
   </div>
 
   <div class="col-6 col-md-3">
     <div class="stat-card todo">
       <div class="stat-title">To-Do</div>
-      <div class="stat-number">
-        {{ tasks.filter(t => t.status === 'TO_DO').length }}
-      </div>
+      <div class="stat-number">{{ todoCount }}</div>
     </div>
   </div>
 
   <div class="col-6 col-md-3">
     <div class="stat-card progress">
       <div class="stat-title">In Progress</div>
-      <div class="stat-number">
-        {{ tasks.filter(t => t.status === 'IN_PROGRESS').length }}
-      </div>
+      <div class="stat-number">{{ inProgressCount }}</div>
     </div>
   </div>
 
   <div class="col-6 col-md-3">
     <div class="stat-card done">
       <div class="stat-title">Done</div>
-      <div class="stat-number">
-        {{ tasks.filter(t => t.status === 'DONE').length }}
-      </div>
+      <div class="stat-number">{{ doneCount }}</div>
     </div>
   </div>
 
 </div>
 
-  <!-- ===== Toolbar ===== -->
-  <div class="toolbar mb-4">
 
-    <div class="status-tabs">
-      <button
-        class="tab-btn"
-        [class.active]="selectedStatus === 'ALL'"
-        (click)="filterByStatus('ALL')">
-        All Tasks
-      </button>
+<!-- ================= TOOLBAR ================= -->
 
-      <button
-        class="tab-btn"
-        [class.active]="selectedStatus === 'TO_DO'"
-        (click)="filterByStatus('TO_DO')">
-        To-Do
-      </button>
+<div class="toolbar mb-4">
 
-      <button
-        class="tab-btn"
-        [class.active]="selectedStatus === 'IN_PROGRESS'"
-        (click)="filterByStatus('IN_PROGRESS')">
-        In Progress
-      </button>
+  <div class="status-tabs">
 
-      <button
-        class="tab-btn"
-        [class.active]="selectedStatus === 'DONE'"
-        (click)="filterByStatus('DONE')">
-        Done
-      </button>
+    <button
+      class="tab-btn"
+      [class.active]="selectedStatus === 'ALL'"
+      (click)="filterByStatus('ALL')">
+      All Tasks
+    </button>
+
+    <button
+      class="tab-btn"
+      [class.active]="selectedStatus === 'TO_DO'"
+      (click)="filterByStatus('TO_DO')">
+      To-Do
+    </button>
+
+    <button
+      class="tab-btn"
+      [class.active]="selectedStatus === 'IN_PROGRESS'"
+      (click)="filterByStatus('IN_PROGRESS')">
+      In Progress
+    </button>
+
+    <button
+      class="tab-btn"
+      [class.active]="selectedStatus === 'DONE'"
+      (click)="filterByStatus('DONE')">
+      Done
+    </button>
+
+    <button
+      class="tab-btn"
+      (click)="filterAssignedToMe()">
+      Assigned to Me
+    </button>
+
+    <button
+      class="tab-btn"
+      (click)="sortByPriority()">
+      Sort: Priority
+    </button>
+
+    <button
+      class="tab-btn analytics-btn"
+      (click)="toggleAnalytics()">
+
+      {{ showAnalytics ? 'Hide Analytics' : 'Show Analytics' }}
+
+    </button>
+
+  </div>
+
+
+  <!-- SEARCH + NEW TASK -->
+
+  <div class="toolbar-right">
+
+    <input
+      type="text"
+      class="form-control search-box"
+      placeholder="Search tasks..."
+      [(ngModel)]="searchText"
+      (input)="applyFilters()" />
+
+    <button
+      class="btn btn-primary new-btn"
+      (click)="openCreate()">
+      + New Task
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= ANALYTICS PANEL ================= -->
+
+<div *ngIf="showAnalytics" class="analytics-panel">
+
+  <div class="analytics-header">
+
+    <h5>Analytics Overview</h5>
+
+    <button
+      class="btn btn-sm btn-outline-primary"
+      (click)="toggleAnalytics()">
+      Hide Analytics
+    </button>
+
+  </div>
+
+
+  <!-- KPI CARDS -->
+
+  <div class="kpi-row">
+
+    <div class="kpi-card blue">
+      <div class="kpi-value">{{ completionRate }}%</div>
+      <div class="kpi-label">Completion Rate</div>
     </div>
 
-    <div class="toolbar-right">
-      <input
-        type="text"
-        class="form-control search-box"
-        placeholder="Search tasks..."
-        [(ngModel)]="searchText"
-        (input)="applyFilters()" />
+    <div class="kpi-card red">
+      <div class="kpi-value">{{ overdueCount }}</div>
+      <div class="kpi-label">Overdue Tasks</div>
+    </div>
 
-      <button class="btn btn-primary new-btn" (click)="openCreate()">
-        + New Task
-      </button>
+    <div class="kpi-card orange">
+      <div class="kpi-value">{{ todayCount }}</div>
+      <div class="kpi-label">Due Today</div>
+    </div>
+
+    <div class="kpi-card green">
+      <div class="kpi-value">{{ filteredTasks.length }}</div>
+      <div class="kpi-label">This Week</div>
+    </div>
+
+    <div class="kpi-card purple">
+      <div class="kpi-value">{{ totalCount }}</div>
+      <div class="kpi-label">Total Tasks</div>
     </div>
 
   </div>
 
-  <!-- ===== Task Grid ===== -->
-  <div class="row g-3">
 
-    <div class="col-12 col-md-6 col-lg-4" *ngFor="let task of filteredTasks">
-      <div class="task-card">
+  <!-- CHARTS -->
 
-        <h6 class="task-title">{{ task.title }}</h6>
-        <p class="task-desc">{{ task.description }}</p>
+  <div class="charts-row">
 
-        <!-- status badge -->
-        <span class="status-badge"
-              [ngClass]="{
-                'todo-badge': task.status === 'TO_DO',
-                'progress-badge': task.status === 'IN_PROGRESS',
-                'done-badge': task.status === 'DONE'
-              }">
+    <div class="chart-box">
+
+      <h6>Task Status Breakdown</h6>
+
+      <canvas id="statusChart"></canvas>
+
+    </div>
+
+    <div class="chart-box">
+
+      <h6>Tasks by Priority</h6>
+
+      <canvas id="priorityChart"></canvas>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= TASK GRID ================= -->
+
+<div class="row g-3">
+
+  <div
+    class="col-12 col-md-6 col-lg-4"
+    *ngFor="let task of filteredTasks">
+
+    <div
+      class="task-card"
+      [ngClass]="{
+        'border-overdue': getDueState(task) === 'overdue',
+        'border-today': getDueState(task) === 'today',
+        'border-done': task.status === 'DONE'
+      }">
+
+      <!-- TITLE -->
+
+      <h6 class="task-title">
+        {{ task.title }}
+      </h6>
+
+
+      <!-- DESCRIPTION -->
+
+      <p class="task-desc">
+        {{ task.description }}
+      </p>
+
+
+      <!-- BADGES -->
+
+      <div class="badges">
+
+        <span
+          class="status-badge"
+          [ngClass]="{
+            'todo-badge': task.status === 'TO_DO',
+            'progress-badge': task.status === 'IN_PROGRESS',
+            'done-badge': task.status === 'DONE'
+          }">
+
           {{ task.status.replace('_',' ') }}
+
         </span>
 
-        <div class="due-date">
-          Due: {{ task.dueDate }}
-        </div>
+        <span
+          class="priority-badge"
+          [ngClass]="{
+            'priority-low': task.priority === 'LOW',
+            'priority-medium': task.priority === 'MEDIUM',
+            'priority-high': task.priority === 'HIGH'
+          }">
 
-        <div class="card-actions">
-          <button class="btn btn-sm btn-primary"
-                  (click)="openEdit(task)">
-            Edit
-          </button>
+          {{ task.priority }}
 
-          <button class="btn btn-sm btn-danger"
-                  (click)="deleteTask(task.id!)">
-            Delete
-          </button>
-        </div>
+        </span>
 
       </div>
+
+
+      <!-- DUE DATE -->
+
+      <div class="due-date">
+        Due: {{ task.dueDate }}
+      </div>
+
+
+      <!-- ASSIGNED USER -->
+
+      <div class="assigned-user">
+        Assigned to: {{ task.assignedTo?.fullName || 'Unassigned' }}
+      </div>
+
+
+      <!-- ACTION BUTTONS -->
+
+      <div class="card-actions">
+
+        <button
+          class="btn btn-primary btn-sm"
+          (click)="openEdit(task)">
+          Edit
+        </button>
+
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteTask(task.id!)">
+          Delete
+        </button>
+
+      </div>
+
     </div>
 
   </div>
 
-  <!-- ===== Modal ===== -->
-  <app-task-form
-    *ngIf="showModal"
-    [task]="editingTask"
-    (saved)="onSaved()">
-  </app-task-form>
+</div>
+
+
+<!-- ================= TASK FORM MODAL ================= -->
+
+<app-task-form
+  *ngIf="showModal"
+  [task]="editingTask"
+  (saved)="onSaved()">
+</app-task-form>
+
+</div>
+
+</div>
+
+
+<!-- ================= ACTIVITY FEED PANEL ================= -->
+
+<div class="dashboard-activity">
+
+  <app-activity-feed></app-activity-feed>
+
+</div>
 
 </div>

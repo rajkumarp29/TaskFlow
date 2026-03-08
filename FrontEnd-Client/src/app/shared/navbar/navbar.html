@@ -8,11 +8,14 @@
 
   <!-- DESKTOP RIGHT -->
   <div class="nav-right d-none d-md-flex align-items-center gap-3">
-    <span class="welcome-text">Hello, Raj</span>
-    <div class="avatar"></div>
-  </div>
+  <span class="welcome-text">Hello, Raj</span>
 
-  <!-- 🍔 HAMBURGER (mobile only) -->
+  <button class="logout-btn" (click)="logout()">
+    Logout
+  </button>
+</div>
+
+  <!-- 🍔 HAMBURGER -->
   <button class="hamburger d-md-none" (click)="toggleMenu()">
     ☰
   </button>
@@ -22,6 +25,12 @@
 <!-- 🔥 MOBILE MENU -->
 <div class="mobile-menu" *ngIf="menuOpen">
   <div class="mobile-menu-content">
+
     <span>Hello, Raj</span>
+
+    <button class="logout-btn-mobile" (click)="logout()">
+      Logout
+    </button>
+
   </div>
 </div>

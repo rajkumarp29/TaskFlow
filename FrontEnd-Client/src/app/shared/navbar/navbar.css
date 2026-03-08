@@ -1,68 +1,38 @@
 /* ===== NAVBAR ===== */
 .navbar-custom {
   height: 64px;
-  background: #243b5e;
+  background-color: #243b5e;   /* same dark blue as example */
   color: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  position: relative;
-}
-
-/* ===== LOGO ===== */
-.logo-dot {
-  width: 10px;
-  height: 10px;
-  background: #4da3ff;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.logo-text {
-  font-weight: 600;
-  font-size: 18px;
-}
-
-/* ===== RIGHT SIDE ===== */
-.welcome-text {
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-/* ===== AVATAR ===== */
-.avatar {
-  width: 36px;
-  height: 24px;
-  background: #e5e7eb;
-  border-radius: 6px;
-}
-
-/* ===== 🍔 HAMBURGER ===== */
-.hamburger {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 26px;
-  cursor: pointer;
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* ===== MOBILE MENU ===== */
-.mobile-menu {
-  background: #243b5e;
-  color: white;
-  padding: 12px 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.mobile-menu-content {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
 }
 
-/* ===== MOBILE BEHAVIOR ===== */
-@media (min-width: 768px) {
-  .mobile-menu {
-    display: none;
-  }
+/* LOGO */
+.logo-text{
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+/* WELCOME TEXT */
+.welcome-text{
+  color: white;
+  font-size: 14px;
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.logout-btn{
+  background: #ef4444;
+  border: none;
+  padding: 8px 18px;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.logout-btn:hover{
+  background: #dc2626;
 }

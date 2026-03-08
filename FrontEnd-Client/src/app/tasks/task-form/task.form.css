@@ -1,4 +1,3 @@
-
 /* ===== Modal Overlay ===== */
 .modal-overlay {
   position: fixed;
@@ -16,7 +15,7 @@
 /* ===== Modal Card ===== */
 .modal-card {
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
@@ -48,6 +47,8 @@
 /* ===== Body ===== */
 .modal-body-custom {
   padding: 20px;
+  max-height: 420px;
+  overflow-y: auto;
 }
 
 /* ===== Inputs ===== */
@@ -112,4 +113,93 @@
   .modal-body-custom {
     padding: 16px;
   }
+}
+
+/* ===== Priority Badges ===== */
+
+.priority-badge{
+padding:4px 10px;
+border-radius:999px;
+font-size:12px;
+font-weight:500;
+}
+
+.priority-high{
+background:#fecaca;
+color:#991b1b;
+}
+
+.priority-medium{
+background:#fde68a;
+color:#92400e;
+}
+
+.priority-low{
+background:#dcfce7;
+color:#166534;
+}
+
+/* ===== FORM ROW ===== */
+
+.form-row{
+display:flex;
+gap:12px;
+}
+
+.form-col{
+flex:1;
+}
+
+/* ===== NEW FIELDS HIGHLIGHT ===== */
+
+.new-fields{
+border:1px solid #f59e0b;
+background:#fff7ed;
+padding:10px;
+border-radius:10px;
+margin-top:8px;
+}
+
+/* ===== PRIORITY CHIPS ===== */
+
+.priority-preview{
+margin-top:6px;
+display:flex;
+gap:6px;
+}
+
+.priority-chip{
+padding:3px 8px;
+border-radius:999px;
+font-size:11px;
+font-weight:500;
+}
+
+.priority-chip.high{
+background:#fecaca;
+color:#991b1b;
+}
+
+.priority-chip.medium{
+background:#fde68a;
+color:#92400e;
+}
+
+.priority-chip.low{
+background:#dcfce7;
+color:#166534;
+}
+
+/* ===== COMMENTS SECTION ===== */
+
+.comments-section{
+margin-top:18px;
+border-top:1px solid #e5e7eb;
+padding-top:12px;
+}
+
+.comments-section app-comment-section{
+display:block;
+max-height:160px;
+overflow-y:auto;
 }
