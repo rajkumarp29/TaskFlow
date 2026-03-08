@@ -1,0 +1,101 @@
+<div class="container-fluid min-vh-100 p-0">
+  <div class="row min-vh-100 g-0">
+
+    <!-- LEFT BRAND PANEL -->
+    <div class="col-md-6 d-none d-md-flex brand-panel text-white p-5 flex flex-col justify-center">
+
+      <h1 class="fw-bold mb-3 brand-title">TaskFlow</h1>
+
+      <p class="mb-4 brand-subtitle">
+        Join thousands of teams building better workflows.
+      </p>
+
+      <ul class="list-unstyled space-y-2 opacity-90">
+        <li>• Create & organize tasks easily</li>
+        <li>• Track progress in real-time</li>
+        <li>• Collaborate with your team</li>
+      </ul>
+
+    </div>
+
+    <!-- RIGHT REGISTER PANEL -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center bg-light">
+
+      <div class="card shadow-lg rounded-4 p-4 w-100 max-w-md">
+
+        <h3 class="text-center mb-1 fw-semibold">
+          Create your Account
+        </h3>
+
+        <p class="text-center text-muted mb-4">
+          It's free and only takes a minute
+        </p>
+
+        <!-- 🔥 IMPORTANT: ngForm reference added -->
+        <form (ngSubmit)="onRegister()" #f="ngForm">
+
+          <input
+            type="text"
+            class="form-control mb-3"
+            placeholder="Full name"
+            [(ngModel)]="form.name"
+            name="name"
+            required
+          />
+
+          <input
+            type="email"
+            class="form-control mb-3"
+            placeholder="Email address"
+            [(ngModel)]="form.email"
+            name="email"
+            required
+          />
+
+          <input
+            type="password"
+            class="form-control mb-3"
+            placeholder="Password"
+            [(ngModel)]="form.password"
+            name="password"
+            required
+          />
+
+          <input
+            type="password"
+            class="form-control mb-2"
+            placeholder="Confirm password"
+            [(ngModel)]="form.confirmPassword"
+            name="confirmPassword"
+            required
+          />
+
+          <!-- ERROR MESSAGE -->
+          <div *ngIf="error" class="alert alert-danger py-2">
+            {{ error }}
+          </div>
+
+          <!-- 🔥 IMPORTANT: type submit -->
+          <button
+            type="submit"
+            class="btn btn-primary w-100 rounded-3 mt-2"
+            [disabled]="!form.name || !form.email || !form.password || !form.confirmPassword">
+            Create Account
+          </button>
+
+        </form>
+
+        <div class="text-center mt-3">
+          <small>
+            Already have an account?
+            <a routerLink="/login" class="text-primary fw-semibold">
+              Sign in here
+            </a>
+          </small>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

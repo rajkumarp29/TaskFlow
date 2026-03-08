@@ -1,0 +1,444 @@
+/* ================= PAGE ================= */
+
+.dashboard-container{
+padding:18px;
+background:#f4f6fa;
+min-height:100vh;
+}
+
+
+/* ================= ALERT BANNER ================= */
+
+.alert-banner{
+background:#fee2e2;
+border:1px solid #f87171;
+color:#991b1b;
+padding:8px 12px;
+border-radius:8px;
+margin-bottom:16px;
+display:flex;
+align-items:center;
+font-size:13px;
+}
+
+
+/* ================= STAT CARDS ================= */
+
+.stat-card{
+background:#ffffff;
+border-radius:12px;
+padding:12px 16px;
+height:100%;
+min-height:70px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+border-left:4px solid #2563eb;
+}
+
+.stat-card.todo{border-left-color:#64748b;}
+.stat-card.progress{border-left-color:#f59e0b;}
+.stat-card.done{border-left-color:#22c55e;}
+
+.stat-title{
+font-size:12px;
+color:#64748b;
+font-weight:500;
+}
+
+.stat-number{
+font-size:22px;
+font-weight:700;
+margin-top:4px;
+}
+
+
+/* ================= TOOLBAR ================= */
+
+.toolbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.status-tabs{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.tab-btn{
+border:1px solid #cbd5e1;
+background:white;
+padding:5px 12px;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
+transition:0.2s;
+}
+
+.tab-btn:hover{
+background:#f1f5f9;
+}
+
+.tab-btn.active{
+background:#2563eb;
+color:white;
+border-color:#2563eb;
+}
+
+.toolbar-right{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.search-box{
+width:200px;
+height:34px;
+font-size:13px;
+}
+
+.new-btn{
+border-radius:6px;
+padding:6px 14px;
+font-size:13px;
+}
+
+
+/* ================= TASK CARD ================= */
+
+.task-card{
+background:white;
+border-radius:12px;
+padding:14px;
+box-shadow:0 2px 8px rgba(0,0,0,0.06);
+transition:0.2s;
+height:auto;
+border-left:3px solid #e5e7eb;
+}
+
+.task-card:hover{
+transform:translateY(-3px);
+}
+
+.task-title{
+font-weight:600;
+margin-bottom:2px;
+font-size:15px;
+}
+
+.task-desc{
+font-size:12px;
+color:#64748b;
+margin-bottom:8px;
+}
+
+
+/* ================= STATUS BADGES ================= */
+
+.status-badge{
+display:inline-block;
+padding:3px 8px;
+border-radius:999px;
+font-size:11px;
+margin-bottom:6px;
+}
+
+.todo-badge{background:#e2e8f0;}
+.progress-badge{background:#fde68a;}
+.done-badge{background:#bbf7d0;}
+
+
+/* ================= PRIORITY BADGES ================= */
+
+.priority-badge{
+padding:3px 8px;
+border-radius:999px;
+font-size:11px;
+font-weight:500;
+margin-left:6px;
+}
+
+.priority-low{
+background:#dcfce7;
+color:#166534;
+}
+
+.priority-medium{
+background:#fde68a;
+color:#92400e;
+}
+
+.priority-high{
+background:#fecaca;
+color:#991b1b;
+}
+
+
+/* ================= BADGES ALIGNMENT ================= */
+
+.badges{
+display:flex;
+gap:6px;
+align-items:center;
+margin-bottom:8px;
+}
+
+
+/* ================= DUE DATE ================= */
+
+.due-date{
+font-size:12px;
+color:#64748b;
+margin-top:4px;
+}
+
+.assigned-user{
+font-size:12px;
+margin-top:4px;
+margin-bottom:8px;
+}
+
+
+/* ================= CARD ACTIONS ================= */
+
+.card-actions{
+display:flex;
+justify-content:flex-end;
+gap:8px;
+margin-top:8px;
+}
+
+.card-actions .btn{
+padding:4px 10px;
+font-size:11px;
+border-radius:6px;
+}
+
+
+/* ================= TASK BORDER STATES ================= */
+
+.border-overdue{
+border-left:3px solid #ef4444;
+}
+
+.border-today{
+border-left:3px solid #f59e0b;
+}
+
+.border-done{
+border-left:3px solid #22c55e;
+}
+
+.border-todo{
+border-left:3px solid #3b82f6;
+}
+
+.border-progress{
+border-left:3px solid #f59e0b;
+}
+
+
+/* ================= ANALYTICS PANEL ================= */
+
+.analytics-panel{
+background:white;
+border-radius:12px;
+padding:20px;
+margin-bottom:24px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.analytics-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
+
+.analytics-header h5{
+font-size:16px;
+font-weight:600;
+margin:0;
+}
+
+
+/* ================= KPI CARDS ================= */
+
+.kpi-row{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:14px;
+margin-bottom:22px;
+}
+
+.kpi-card{
+background:white;
+padding:16px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+position:relative;
+overflow:hidden;
+transition:0.2s;
+}
+
+.kpi-card:hover{
+transform:translateY(-3px);
+}
+
+.kpi-card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:4px;
+}
+
+.kpi-card.blue::before{background:#3b82f6;}
+.kpi-card.red::before{background:#ef4444;}
+.kpi-card.orange::before{background:#f59e0b;}
+.kpi-card.green::before{background:#22c55e;}
+.kpi-card.purple::before{background:#8b5cf6;}
+
+.kpi-value{
+font-size:22px;
+font-weight:700;
+}
+
+.kpi-label{
+font-size:12px;
+color:#64748b;
+margin-top:4px;
+}
+
+
+/* ================= CHARTS ================= */
+
+.charts-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+margin-top:10px;
+}
+
+.chart-box{
+background:#f9fafb;
+padding:18px;
+border-radius:12px;
+height:300px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.chart-box h6{
+font-size:14px;
+margin-bottom:10px;
+color:#374151;
+}
+
+.chart-box canvas{
+max-height:220px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width:767px){
+
+.dashboard-container .row.mb-4{
+flex-wrap:nowrap;
+overflow-x:auto;
+gap:8px;
+padding-bottom:4px;
+}
+
+.dashboard-container .row.mb-4 > div{
+flex:0 0 120px;
+max-width:120px;
+}
+
+.stat-card{
+min-height:60px;
+padding:10px;
+}
+
+.stat-number{
+font-size:18px;
+}
+
+.toolbar{
+flex-direction:column;
+align-items:stretch;
+gap:10px;
+}
+
+.toolbar-right{
+width:100%;
+flex-direction:column;
+gap:8px;
+}
+
+.search-box{
+width:100%;
+}
+
+.new-btn{
+width:100%;
+}
+
+.task-card{
+border-radius:10px;
+padding:12px;
+}
+
+.task-title{
+font-size:14px;
+}
+
+.task-desc{
+font-size:11px;
+}
+
+.kpi-row{
+grid-template-columns:1fr 1fr;
+}
+
+.charts-row{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ===== DASHBOARD LAYOUT ===== */
+
+.dashboard-layout{
+
+display:grid;
+grid-template-columns:3fr 1fr;
+gap:20px;
+padding:18px;
+
+}
+
+.dashboard-main{
+
+width:100%;
+
+}
+
+.dashboard-activity{
+
+position:sticky;
+top:80px;
+height:fit-content;
+
+}

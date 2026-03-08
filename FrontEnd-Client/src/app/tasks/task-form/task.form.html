@@ -1,0 +1,156 @@
+<div class="modal-overlay">
+
+  <div class="modal-card">
+
+    <!-- HEADER -->
+    <div class="modal-header-custom">
+      {{ form.id ? 'Edit Task' : 'Create New Task' }}
+      <button class="close-btn" (click)="saved.emit()">✕</button>
+    </div>
+
+    <!-- BODY -->
+    <div class="modal-body-custom">
+
+      <!-- TITLE -->
+      <div class="mb-3">
+        <label class="form-label">Task Title</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="form.title"
+          name="title">
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="mb-3">
+        <label>Description</label>
+        <textarea
+          class="form-control"
+          rows="2"
+          [(ngModel)]="form.description"
+          name="description">
+        </textarea>
+      </div>
+
+      <!-- ROW -->
+      <div class="form-row">
+
+        <!-- DUE DATE -->
+        <div class="form-col">
+          <label>Due Date</label>
+          <input
+            type="date"
+            class="form-control"
+            [(ngModel)]="form.dueDate"
+            name="dueDate">
+        </div>
+
+        <!-- STATUS -->
+        <div class="form-col">
+          <label>Status</label>
+          <select
+            class="form-control"
+            [(ngModel)]="form.status"
+            name="status">
+            <option value="TO_DO">To Do</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="DONE">Done</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- NEW FIELDS -->
+      <div class="new-fields">
+
+        <div class="form-row">
+
+          <!-- PRIORITY -->
+          <div class="form-col">
+
+            <label>Priority</label>
+
+            <select
+              class="form-control"
+              [(ngModel)]="form.priority"
+              name="priority">
+
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+
+            </select>
+
+            <div class="priority-preview">
+
+              <span class="priority-chip high">HIGH</span>
+              <span class="priority-chip medium">MEDIUM</span>
+              <span class="priority-chip low">LOW</span>
+
+            </div>
+
+          </div>
+
+          <!-- ASSIGN -->
+          <div class="form-col">
+
+            <label>Assign To</label>
+
+            <select
+              class="form-control"
+              [(ngModel)]="form.assignedTo"
+              name="assignedTo">
+
+              <option [ngValue]="null">Unassigned</option>
+
+              <option
+                *ngFor="let user of users"
+                [ngValue]="user.id">
+
+                {{ user.fullName }}
+
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- COMMENTS SECTION (EDIT MODE ONLY) -->
+      <div class="comments-section" *ngIf="form.id">
+
+        <h6>Comments</h6>
+
+        <app-comment-section
+          [taskId]="form.id">
+        </app-comment-section>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="modal-footer-custom">
+
+      <button
+        class="btn-cancel"
+        (click)="saved.emit()">
+        Cancel
+      </button>
+
+      <button
+        class="btn-save"
+        (click)="saveTask()">
+
+        {{ form.id ? 'Update Task' : 'Create Task' }}
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

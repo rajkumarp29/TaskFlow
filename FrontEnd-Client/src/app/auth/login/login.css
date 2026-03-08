@@ -1,0 +1,33 @@
+/* width control */
+.max-w-md {
+  max-width: 420px;
+}
+
+/* pointer helper */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* LEFT PANEL */
+.brand-panel {
+  background-color: #1e40af;
+  min-height: 100vh;
+}
+
+/* typography polish */
+.brand-title {
+  font-size: 3rem;
+  letter-spacing: 0.5px;
+}
+
+.brand-subtitle,
+.brand-list li {
+  opacity: 0.9;
+}
+
+/* mobile spacing safety */
+@media (max-width: 768px) {
+  .max-w-md {
+    max-width: 95%;
+  }
+}

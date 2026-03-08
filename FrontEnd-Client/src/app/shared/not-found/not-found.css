@@ -1,0 +1,34 @@
+.notfound-wrapper {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f6fa;
+}
+
+.code {
+  font-size: 120px;
+  font-weight: 800;
+  color: #cfd6e4;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #6c757d;
+}
+
+.links a {
+  margin: 0 8px;
+  font-size: 14px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}

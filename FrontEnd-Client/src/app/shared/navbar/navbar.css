@@ -1,0 +1,38 @@
+/* ===== NAVBAR ===== */
+.navbar-custom {
+  height: 64px;
+  background-color: #243b5e;   /* same dark blue as example */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+/* LOGO */
+.logo-text{
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+/* WELCOME TEXT */
+.welcome-text{
+  color: white;
+  font-size: 14px;
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.logout-btn{
+  background: #ef4444;
+  border: none;
+  padding: 8px 18px;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.logout-btn:hover{
+  background: #dc2626;
+}
