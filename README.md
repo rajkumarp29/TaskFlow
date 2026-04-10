@@ -117,7 +117,7 @@ cd backend
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/taskflow_db08
-    username: postgres
+    username: root
     password: your_password
 
 3️⃣ Run backend
